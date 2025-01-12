@@ -16,7 +16,7 @@ jobs:
       matrix:
         platform:
           - linux/amd64
-          - aarch64
+          - linux/aarch64
     steps:
       - name: Prepare
         run: |

@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM python:3.9.21-slim-bookworm AS build
+FROM python:3.9.21-slim-bookworm AS build
 
 ARG OPENCV_VERSION="4.8.0"
 
@@ -65,7 +65,7 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
     && make -j$(nproc) && make install
 
 # Stage 2: runtime
-FROM --platform=$BUILDPLATFORM python:3.9.21-slim-bookworm
+FROM python:3.9.21-slim-bookworm
 RUN apt-get clean && \
     apt-get update -yqq && \
     apt-get install -y --no-install-recommends --fix-missing \
